@@ -16,8 +16,14 @@ class FaceBookGrid extends React.Component {
         .then(res => this.setState({users: res.results}))
     }
 
+    handleChange = (e) => {
+        this.setState({
+            input: e.target.value
+        })
+    }
+
     createCards() {
-        return this.state.users.map(user => {
+        return this.filterByusername().map(user => {
             return (
                 <div key={user.login.username} className='each-box'>
                     <img src={user.picture.large} alt='Users' />
@@ -29,11 +35,22 @@ class FaceBookGrid extends React.Component {
         })
     }
 
+    filterByusername = () => {
+        return this.state.users.filter(user => user.login.username.includes(this.state.input))
+    }
+
 
     render() {
         return (
+            <div className='container'>
+            <div>
+            <label htmlFor='input'>Search by username:</label>
+            <input type='text' id='input' value={this.state.input} onChange={this.handleChange} />
+            </div>
             <div className='grid-container'>
+
             {this.createCards()}
+            </div>
             </div>
         );
     };
