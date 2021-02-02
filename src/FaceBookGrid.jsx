@@ -42,16 +42,15 @@ class FaceBookGrid extends React.Component {
 
     render() {
         return (
-            <div className='container'>
-            <div>
-            <label htmlFor='input'>Search by username:</label>
-            <input type='text' id='input' value={this.state.input} onChange={this.handleChange} />
-            </div>
-            <div className='grid-container'>
-
-            {this.createCards()}
-            </div>
-            </div>
+         <div className='container'>
+              <div>
+                 <label htmlFor='input'>Search by username:</label>
+                    <input type='text' id='input' value={this.state.input} onChange={this.handleChange} />
+               </div>
+                <div className='grid-container'>
+                    {this.createCards()}
+                </div>
+         </div>
         );
     };
 };
